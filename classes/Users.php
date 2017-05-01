@@ -6,14 +6,13 @@
  */
 class Users 
 {
-    private $id, $user_name, $user_password, $hash_salt, $user_email, $reg_date;
+    private $id, $user_name, $user_password, $user_email, $reg_date;
     
-    function __construct($id, $user_name, $user_password, $hash_salt, $user_email, $reg_date) 
+    function __construct($id, $user_name, $user_password, $user_email, $reg_date) 
     {
         $this->id = $id;
         $this->user_name = $user_name;
         $this->user_password = $user_password;
-        $this->hash_salt = $hash_salt;
         $this->user_email = $user_email;
         $this->reg_date = $reg_date;
     }
@@ -31,11 +30,6 @@ class Users
     function getUser_password() 
     {
         return $this->user_password;
-    }
-
-    function getHash_salt()
-    {
-        return $this->hash_salt;
     }
 
     function getUser_email() 
@@ -63,11 +57,6 @@ class Users
         $this->user_password = $user_password;
     }
 
-    function setHash_salt($hash_salt) 
-    {
-        $this->hash_salt = $hash_salt;
-    }
-
     function setUser_email($user_email) 
     {
         $this->user_email = $user_email;
@@ -83,7 +72,6 @@ class Users
         return "ID: $this->id + "
                 . "\nName: $this->user_name +"
                 . "\nPassword: $this->user_name +"
-                . "\nHash Salt: $this->hash_salt +"
                 . "\nUser Email: $this->user_email +"
                 . "\nReg Date: $this->reg_date + \n";
     }
