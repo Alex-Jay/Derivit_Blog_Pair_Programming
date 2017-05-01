@@ -101,11 +101,9 @@ if (preg_match($regexPassword, $password) && $password != NULL)
     {
         $error_messagePassword = "Passwords needs to be the same.";
     }
-    $confirmPasswordValid = true;
+    $passwordValid = true;
 }
 
-//send errors to registration
-header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 
 if($nameValid === true && $emailValid === true && $passwordValid === true && $confirmPasswordValid === true)
 {
@@ -123,6 +121,11 @@ if($nameValid === true && $emailValid === true && $passwordValid === true && $co
             $stmt->execute($pArray);
             header("location: index.php");
             unset($db);
+}
+else 
+{
+    //send errors to registration
+    header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 }
 die();
 ?>
