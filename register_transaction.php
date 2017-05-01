@@ -47,6 +47,10 @@ if(empty($name) || empty($email) || empty($password) || empty($confirm))
     if(empty($name) && empty($email) && empty($password) && empty($confirm))
     {
         $error_message = "One or More Fields cannot be Empty.";
+        $error_messageName = " ";
+        $error_messageEmail = " ";
+        $error_messagePassword = " ";
+        $error_messageConfirm = " ";
     }
     header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 }

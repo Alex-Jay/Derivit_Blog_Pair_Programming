@@ -4,30 +4,18 @@ if(!empty($_GET))
 {
     $error_message = $_GET["error_message"];
     preg_match_all("/[a-zA-Z ]*[^!]/", $error_message, $output_array);
-    if(empty($output_array))
+
+    foreach($output_array as $x)
     {
-        echo "LOL";
-        $error_messageEmpty = "";
-        $error_messageName = "";
-        $error_messageEmail = "";
-        $error_messagePassword = "";
-        $error_messageConfirm = "";
-    }
-    else
-    {
-        foreach($output_array as $x)
-        {
-            $error_messageEmpty = $x[0];
-            $error_messageName = $x[1];
-            $error_messageEmail = $x[2];
-            $error_messagePassword = $x[3];
-            $error_messageConfirm = $x[4];
-        }
+        $error_messageEmpty = $x[0];
+        $error_messageName = $x[1];
+        $error_messageEmail = $x[2];
+        $error_messagePassword = $x[3];
+        $error_messageConfirm = $x[4];
     }
 }
 else
 {
-        echo "LOL";
         $error_messageEmpty = "";
         $error_messageName = "";
         $error_messageEmail = "";
