@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
 if (!empty($_GET)) {
     $error_message = $_GET["error_message"];
@@ -21,6 +16,11 @@ if (!empty($_GET)) {
             body
             {
                 padding-top: 50px;
+            }
+            
+            #error
+            {
+                color: red;
             }
         </style>
     </head>
@@ -41,10 +41,9 @@ if (!empty($_GET)) {
                 <div class="col-md-12">
                     <h1>Sign Up</h1>
                     <h4>It's free and always will be.</h4>
-                    <?php echo "<span id='error'>" . $error_message . "</span>"; ?>
-                    <form class="form-horizontal" method="post" action="register_transaction.php">
-
+                    <form class="form-horizontal" method="POST" action="register_transaction.php">
                         <div class="form-group">
+                            <?php echo "<span id='error'>" . $error_message . "</span><br>"; ?>
                             <label for="name" class="cols-sm-2 control-label">Your Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
