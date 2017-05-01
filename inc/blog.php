@@ -6,8 +6,6 @@
     $query->execute();
     $postData = $query->fetchAll();
     
-    $amtOfComments = 0;
-    
     function fetchCommentCount($db, $postId)
     {
         $stmt = "SELECT COUNT(comment_id) FROM comments WHERE post_id = $postId";
@@ -21,6 +19,16 @@
     function fetchVoteCount($db, $postId)
     {
         $stmt = "SELECT COUNT(vote_id) FROM votes WHERE post_id = $postId";
+        $query = $db->prepare($stmt);
+        $query->execute();
+        $f = $query->fetch();
+        $result = $f[0];
+        return $result;
+    }
+    
+    function fetchPostTimeStamp($db, $postId)
+    {
+        $stmt = "SELECT post_timestamp FROM posts WHERE post_id = $postId";
         $query = $db->prepare($stmt);
         $query->execute();
         $f = $query->fetch();
@@ -57,6 +65,7 @@
             <?php echo $post['post_body']; ?>
             <p>COMMENTS: <?php echo fetchCommentCount($db, $postId) ?></p>
             <p>VOTES: <?php echo fetchVoteCount($db, $postId) ?></p>
+            <p>TIMESTAMP: <?php echo fetchPostTimeStamp($db, $postId) ?></p>
         </div>
     </div>
 <?php endforeach; ?>
