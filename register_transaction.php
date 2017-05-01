@@ -21,7 +21,7 @@ $confirm = $_POST["confirm"];
 $hash_pw = NULL;
 $hash_salt = NULL;
 
-$nameValid = false;
+$nameValid = true;
 $emailValid = false;
 $passwordValid = false;
 $confirmPasswordValid = false;
@@ -54,17 +54,13 @@ $regex = "#[a-z]"
 if (preg_match($regex, $email)) 
 {
     echo "Email is good!";
-} 
-else 
-{
-    echo "Email is bad!";
-    $emailValid = false;
+    $emailValid = true;
 }
 
 //validate password using regex
 $regexPassword = "#[a-zA-Z0-9.-_]{7,}#";
 
-if (preg_match($regexPassword, $password)) 
+if (preg_match($regexPassword, $password) && $password != NULL) 
 {
     echo "Password is good!";
     $passwordValid = true;
@@ -76,7 +72,7 @@ else
     $passwordValid = false;
 }
 
-if($password == $confirm)
+if($password == $confirm && $confirm != NULL)
 {
     echo 'Confirm password matches';
     $confirmPasswordValid = true;
@@ -92,18 +88,12 @@ foreach($userData as $user)
     if($user['user_name'] === $name)
     {
         echo 'Name Already Taken.';
-    }
-    else
-    {
-        $nameValid = true;
+        $nameValid = false;
     }
     if($user['user_email'] === $email)
     {
         echo 'Email Already Taken.';
-    }
-    else
-    {
-        $emailValid = true;
+        $emailValid = false;
     }
 }
 
