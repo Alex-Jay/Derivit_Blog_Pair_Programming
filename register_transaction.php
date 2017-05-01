@@ -15,7 +15,7 @@ $confirm = $_POST["confirm"];
 $hash_pw = NULL;
 
 $nameValid = true;
-$emailValid = false;
+$emailValid = true;
 $passwordValid = false;
 $confirmPasswordValid = false;
 
@@ -52,9 +52,18 @@ if(empty($name) || empty($email) || empty($password) || empty($confirm))
         $error_messagePassword = " ";
         $error_messageConfirm = " ";
     }
-    header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 }
 
+//validate username
+foreach($userData as $user)
+{
+    if($user['user_name'] === $name)
+    {
+        $nameValid = false;
+        $error_messageName = "Username already exists.";
+    }
+}
+    
 //validate email using regex
 $regex = "#[a-z]"
         . "[a-zA-Z0-9.-_]*"
@@ -69,7 +78,14 @@ $regex = "#[a-z]"
 
 if (preg_match($regex, $email)) 
 {
-    $emailValid = true;
+    foreach($userData as $user)
+    {
+        if($user['user_email'] === $email)
+        {
+            $emailValid = false;
+            $error_messageEmail = "Email already exists.";
+        }
+    }
 }
 
 //validate password using regex
@@ -77,33 +93,19 @@ $regexPassword = "#[a-zA-Z0-9.-_]{7,}#";
 
 if (preg_match($regexPassword, $password) && $password != NULL) 
 {
-    $passwordValid = true;
-} 
-else 
-{
-    $passwordValid = false;
-}
-
-if($password == $confirm && $confirm != NULL)
-{
+    if($password == $confirm && $confirm != NULL)
+    {
+        $confirmPasswordValid = true;
+    }
+    else
+    {
+        $error_messagePassword = "Passwords needs to be the same.";
+    }
     $confirmPasswordValid = true;
 }
-else 
-{
-    $confirmPasswordValid = false;
-}
 
-foreach($userData as $user)
-{
-    if($user['user_name'] === $name)
-    {
-        $nameValid = false;
-    }
-    if($user['user_email'] === $email)
-    {
-        $emailValid = false;
-    }
-}
+//send errors to registration
+header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 
 if($nameValid === true && $emailValid === true && $passwordValid === true && $confirmPasswordValid === true)
 {

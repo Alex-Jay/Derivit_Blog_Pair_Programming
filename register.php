@@ -58,11 +58,11 @@ else
                 <div class="col-md-12">
                     <h1>Sign Up</h1>
                     <h4>It's free and always will be.</h4>
-                    <?php echo "<span id='error'>" . $error_messageEmpty . "</span><br>"; ?>
+                    <?php echo "<span id='error'>" . $error_messageEmpty . "</span>"; ?>
                     <form class="form-horizontal" method="POST" action="register_transaction.php">
                         <div class="form-group">
-                            <?php echo "<span id='error'>" . $error_messageName . "</span><br>"; ?>
-                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                            <label for="name" class="cols-sm-2 control-label">Your Username</label>
+                            <?php echo "<span id='error'>" . $error_messageName . "</span>"; ?>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
@@ -72,8 +72,8 @@ else
                         </div>
 
                         <div class="form-group">
-                            <?php echo "<span id='error'>" . $error_messageEmail . "</span><br>"; ?>
                             <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                            <?php echo "<span id='error'>" . $error_messageEmail . "</span>"; ?>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
@@ -83,8 +83,8 @@ else
                         </div>
 
                         <div class="form-group">
-                            <?php echo "<span id='error'>" . $error_messagePassword . "</span><br>"; ?>
                             <label for="password" class="cols-sm-2 control-label">Password</label>
+                            <?php echo "<span id='error'>" . $error_messagePassword . "</span>"; ?>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
@@ -92,10 +92,9 @@ else
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <?php echo "<span id='error'>" . $error_messageConfirm . "</span><br>"; ?>
                             <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                            <?php echo "<span id='error'>" . $error_messageConfirm . "</span>"; ?>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"></span>
