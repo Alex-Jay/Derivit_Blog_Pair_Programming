@@ -11,6 +11,6 @@ catch (Exception $e)
 {
     $error_message = $e->getMessage();
     include('database_error.php');
-    exit();
+    die();
 }
 ?>
