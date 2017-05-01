@@ -18,6 +18,13 @@ $nameValid = true;
 $emailValid = false;
 $passwordValid = false;
 $confirmPasswordValid = false;
+
+$error_message = " ";
+$error_messageName = " ";
+$error_messageEmail = " ";
+$error_messagePassword = " ";
+$error_messageConfirm = " ";
+
 //Check if inputs are valid
 if(empty($name) || empty($email) || empty($password) || empty($confirm))
 {

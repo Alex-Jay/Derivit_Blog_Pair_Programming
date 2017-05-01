@@ -3,15 +3,36 @@
 if(!empty($_GET))
 {
     $error_message = $_GET["error_message"];
-    $error_messageName = $_GET["error_messageName"];
-    $error_messageEmail = $_GET["error_messageEmail"];
-    $error_messagePassword = $_GET["error_messagePassword"];
-    $error_messageConfirm = $_GET["error_messageConfirm"];
-    
+    preg_match_all("/[a-zA-Z ]*[^!]/", $error_message, $output_array);
+    if(empty($output_array))
+    {
+        echo "LOL";
+        $error_messageEmpty = "";
+        $error_messageName = "";
+        $error_messageEmail = "";
+        $error_messagePassword = "";
+        $error_messageConfirm = "";
+    }
+    else
+    {
+        foreach($output_array as $x)
+        {
+            $error_messageEmpty = $x[0];
+            $error_messageName = $x[1];
+            $error_messageEmail = $x[2];
+            $error_messagePassword = $x[3];
+            $error_messageConfirm = $x[4];
+        }
+    }
 }
 else
 {
-    $error_message = "";
+        echo "LOL";
+        $error_messageEmpty = "";
+        $error_messageName = "";
+        $error_messageEmail = "";
+        $error_messagePassword = "";
+        $error_messageConfirm = "";
 }
 ?>
 <html>
@@ -49,7 +70,7 @@ else
                 <div class="col-md-12">
                     <h1>Sign Up</h1>
                     <h4>It's free and always will be.</h4>
-                    <?php echo "<span id='error'>" . $error_message . "</span><br>"; ?>
+                    <?php echo "<span id='error'>" . $error_messageEmpty . "</span><br>"; ?>
                     <form class="form-horizontal" method="POST" action="register_transaction.php">
                         <div class="form-group">
                             <?php echo "<span id='error'>" . $error_messageName . "</span><br>"; ?>
