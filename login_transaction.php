@@ -1,5 +1,5 @@
 <?php
-
+require_once 'database.php';
 session_start();
 
 // if it exists, then destroy any previous session 
