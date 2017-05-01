@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <title>DB Connection Error</title>
+        <link rel="stylesheet" type="text/css" href="css/error.css">
     </head>
     <body>
         <main>
