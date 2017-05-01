@@ -110,9 +110,21 @@ foreach($userData as $user)
     }
 }
 
+function randString($len)
+{
+    $char = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charLen = strlen($char);
+    $randString = '';
+    for ($i = 0; $i < $len; $i++)
+    {
+        $randString .= $char[rand(0, $charLen - 1)];
+    }
+    return $randString;
+}
+
 if($nameValid === true && $emailValid === true && $passwordValid === true && $confirmPasswordValid === true)
 {
-    $hash_salt = "fasn32kjbkj3nbkjbagjkabgjabgka";
+    $hash_salt = randString(40);
     $hash_pw = password_hash($password, PASSWORD_BCRYPT, ["salt" => $hash_salt]);
     
     $sql = 'INSERT INTO users(user_id, user_name, user_password, hash_salt, user_email, reg_date)
