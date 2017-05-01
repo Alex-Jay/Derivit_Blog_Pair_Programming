@@ -112,9 +112,8 @@ foreach($userData as $user)
 
 if($nameValid === true && $emailValid === true && $passwordValid === true && $confirmPasswordValid === true)
 {
-    $rb = random_bytes(30);
-    $hash_salt = bin2hex($rb);
-    $hash_pw = password_hash($password, PASSWORD_BCRYPT, ["salt" => $rn]);
+    $hash_salt = "fasn32kjbkj3nbkjbagjkabgjabgka";
+    $hash_pw = password_hash($password, PASSWORD_BCRYPT, ["salt" => $hash_salt]);
     
     $sql = 'INSERT INTO users(user_id, user_name, user_password, hash_salt, user_email, reg_date)
               VALUES (:user_id, :user_name, :user_password, :hash_salt, :user_email, :reg_date)';
