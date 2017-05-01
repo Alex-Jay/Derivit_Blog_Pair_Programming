@@ -1,73 +1,36 @@
+<?php
+    require_once 'database.php';
+    $stmt = "SELECT * FROM posts";
+    $query = $db->prepare($stmt);
+    $query->execute();
+    $postData = $query->fetchAll();
+?>
 
-<div class="media">
-    <div class="media-left media-top">
-        <a href="#">
-            <img class="media-object" src="img/logo.png" alt="logo">
-        </a>
+<style>
+    .media
+    {
+        padding: 10px;
+    }
+    a, a:focus, a:hover, a:after
+    {
+        text-decoration: none;
+        color: blue;
+    }
+    #post_image
+    {
+        height: 150px;
+        width: 200px;
+        border-radius: 10px;
+    }
+</style>
+<?php foreach($postData as $post): ?>
+    <div class="media">
+        <div class="media-left media-top">
+           <img id="post_image" class="media-object" src="img/<?php echo $post['post_image']; ?>" alt="logo">
+        </div>
+        <div class="media-body">
+            <a href="viewPost.php?=<?php echo $post['post_id']; ?>"><h4 class="media-heading"><?php echo $post['post_title']; ?></h4></a>
+            <?php echo $post['post_body']; ?>
+        </div>
     </div>
-    <div class="media-body">
-        <h4 class="media-heading">Top aligned media</h4>
-        Cras sit amet nibh libero, in gravida nulla. 
-        Nulla vel metus scelerisque ante sollicitudin commodo. 
-        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-        Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. 
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </div>
-</div>
-<div class="media">
-    <div class="media-left media-top">
-        <a href="#">
-            <img class="media-object" src="img/logo.png" alt="logo">
-        </a>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">Top aligned media</h4>
-        Cras sit amet nibh libero, in gravida nulla. 
-        Nulla vel metus scelerisque ante sollicitudin commodo. 
-        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-        Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. 
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </div>
-</div>
-
-<div class="media">
-    <div class="media-left media-top">
-        <a href="#">
-            <img class="media-object" src="img/logo.png" alt="logo">
-        </a>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">Top aligned media</h4>
-        Cras sit amet nibh libero, in gravida nulla. 
-        Nulla vel metus scelerisque ante sollicitudin commodo. 
-        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-        Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. 
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </div>
-</div>
-
-<div class="media">
-    <div class="media-left media-top">
-        <a href="#">
-            <img class="media-object" src="img/logo.png" alt="logo">
-        </a>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">Top aligned media</h4>
-        Cras sit amet nibh libero, in gravida nulla. 
-        Nulla vel metus scelerisque ante sollicitudin commodo. 
-        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-        Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. 
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </div>
-</div>
-
-
+<?php endforeach; ?>
