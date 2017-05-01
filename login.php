@@ -10,6 +10,15 @@ session_start();
 session_unset();
 session_destroy();
 session_start();
+
+if(!empty($_GET))
+{
+    $error_message = $_GET["error_message"];
+}
+else
+{
+        $error_message = "";
+}
 ?>
 <html>
     <head>
@@ -21,6 +30,11 @@ session_start();
             body
             {
                 padding-top: 50px;
+            }
+            
+            #error
+            {
+                color: red;
             }
         </style>
     </head>
@@ -34,7 +48,7 @@ session_start();
                 <div class="col-md-12">
                     <h1>Login</h1>
                     <form class="form-horizontal" method="post" action="login_transaction.php">
-
+                        <?php echo "<span id='error'>" . $error_message . "</span>"; ?>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">Name</label>
                             <div class="cols-sm-10">

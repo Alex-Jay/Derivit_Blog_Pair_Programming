@@ -27,10 +27,18 @@ foreach($userData as $user)
         }
         else
         {
-            echo "Password Incorrect.";
+            $error_message = "Username or password is incorrect";
         }
     }
+    else
+    {
+        $error_message = "Username or password is incorrect";
+    }
 }
+
+//send errors to registration
+header("location:login.php?error_message=" . $error_message);   #redirect to the index page
+
 
 /* Validate and assign input data */
 /* if ((empty($email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL))) ||
