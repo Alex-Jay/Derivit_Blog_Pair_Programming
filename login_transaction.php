@@ -24,20 +24,21 @@ foreach($userData as $user)
         {
             header("location: index.php");
             $_SESSION["user_id"] = $user["user_id"];
+            break;
         }
         else
         {
             $error_message = "Username or password is incorrect";
+            header("location:login.php?error_message=" . $error_message);   #redirect to the index page
         }
     }
     else
     {
         $error_message = "Username or password is incorrect";
+        header("location:login.php?error_message=" . $error_message);   #redirect to the index page
     }
 }
 
-//send errors to registration
-header("location:login.php?error_message=" . $error_message);   #redirect to the index page
 
 
 /* Validate and assign input data */
