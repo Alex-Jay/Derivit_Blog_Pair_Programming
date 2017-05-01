@@ -1,0 +1,11 @@
+#post_image
+{
+    height: 150px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.media-heading
+{
+    text-align: center;
+}

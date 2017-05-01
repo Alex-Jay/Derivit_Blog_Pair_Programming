@@ -51,7 +51,7 @@
            <img id="post_image" class="media-object" src="img/<?php echo $post['post_image']; ?>" alt="logo">
         </div>
         <div class="media-body">
-            <a href="viewPost.php?=<?php echo $post['post_id']; ?>"><h4 class="media-heading"><?php echo $post['post_title']; ?></h4></a>
+            <a href="viewPost.php?id=<?php echo $post['post_id']; ?>"><h4 class="media-heading"><?php echo $post['post_title']; ?></h4></a>
             <?php echo $post['post_body']; ?>
             <p>COMMENTS: <?php echo fetchCommentCount($db, $postId) ?></p>
             <p>VOTES: <?php echo fetchVoteCount($db, $postId) ?></p>
