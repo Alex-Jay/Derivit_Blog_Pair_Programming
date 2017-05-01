@@ -5,7 +5,7 @@ $password = '';
 
 try {
     $db = new PDO($dsn, $username, $password);
-    echo "Success.";
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } 
 catch (Exception $e) 
 {

@@ -1,4 +1,6 @@
 <?php
+
+require_once 'database.php';
 /*redirect to the index page
 if (empty($_POST)) {
     header("location:register.php");
@@ -6,6 +8,10 @@ if (empty($_POST)) {
     header("location:register.php?error_message=" . $error_message);   #redirect to the index page
     exit; //stops the code
 }*/
+$stmt = "SELECT user_name, user_email FROM users";
+$query = $db->prepare($stmt);
+$query->execute();
+$userData = $query->fetchAll();
 
 //get the data from the form
 $name = $_POST["name"];
@@ -68,5 +74,17 @@ if($password == $confirm)
 else 
 {
     echo 'confirm password is not the same';
+}
+
+foreach($userData as $user)
+{
+    if($user['user_name'] === $name)
+    {
+        echo 'Name Already Taken.';
+    }
+    if($user['user_email'] === $email)
+    {
+        echo 'Email Already Taken.';
+    }
 }
 ?>
