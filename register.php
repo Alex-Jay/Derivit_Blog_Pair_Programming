@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <?php
-if (!empty($_GET)) {
+if(!empty($_GET))
+{
     $error_message = $_GET["error_message"];
-} else {
+    $error_messageName = $_GET["error_messageName"];
+    $error_messageEmail = $_GET["error_messageEmail"];
+    $error_messagePassword = $_GET["error_messagePassword"];
+    $error_messageConfirm = $_GET["error_messageConfirm"];
+    
+}
+else
+{
     $error_message = "";
 }
 ?>
@@ -41,9 +49,10 @@ if (!empty($_GET)) {
                 <div class="col-md-12">
                     <h1>Sign Up</h1>
                     <h4>It's free and always will be.</h4>
+                    <?php echo "<span id='error'>" . $error_message . "</span><br>"; ?>
                     <form class="form-horizontal" method="POST" action="register_transaction.php">
                         <div class="form-group">
-                            <?php echo "<span id='error'>" . $error_message . "</span><br>"; ?>
+                            <?php echo "<span id='error'>" . $error_messageName . "</span><br>"; ?>
                             <label for="name" class="cols-sm-2 control-label">Your Name</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -54,6 +63,7 @@ if (!empty($_GET)) {
                         </div>
 
                         <div class="form-group">
+                            <?php echo "<span id='error'>" . $error_messageEmail . "</span><br>"; ?>
                             <label for="email" class="cols-sm-2 control-label">Your Email</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -64,6 +74,7 @@ if (!empty($_GET)) {
                         </div>
 
                         <div class="form-group">
+                            <?php echo "<span id='error'>" . $error_messagePassword . "</span><br>"; ?>
                             <label for="password" class="cols-sm-2 control-label">Password</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -74,6 +85,7 @@ if (!empty($_GET)) {
                         </div>
 
                         <div class="form-group">
+                            <?php echo "<span id='error'>" . $error_messageConfirm . "</span><br>"; ?>
                             <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">

@@ -2,13 +2,6 @@
 
 require_once 'database.php';
 
-//redirect to the index page
-/*if(isset($_POST))
-{
-    $error_message = "The input fields are empty!";
-    header("location:register.php?error_message=" . $error_message);   #redirect to the index page
-    exit(); //stops the code
-}*/
 $stmt = "SELECT user_name, user_email FROM users";
 $query = $db->prepare($stmt);
 $query->execute();
@@ -30,25 +23,25 @@ if(empty($name) || empty($email) || empty($password) || empty($confirm))
 {
     if(empty($name))
     {
-        $error_message = "Name Field cannot be Empty.";
+        $error_messageName = "Name Field cannot be Empty.";
     }
     if(empty($email))
     {
-        $error_message = "Email Field cannot be Empty.";
+        $error_messageEmail = "Email Field cannot be Empty.";
     }
     if(empty($password))
     {
-        $error_message = "Password Field cannot be Empty.";
+        $error_messagePassword = "Password Field cannot be Empty.";
     }
     if(empty($confirm))
     {
-        $error_message = "Confirmation Password Field cannot be Empty.";
+        $error_messageConfirm = "Confirmation Password Field cannot be Empty.";
     }
     if(empty($name) && empty($email) && empty($password) && empty($confirm))
     {
         $error_message = "One or More Fields cannot be Empty.";
     }
-    header("location:register.php?error_message=" . $error_message);   #redirect to the index page
+    header("location:register.php?error_message=" . $error_message . "!" . $error_messageName . "!" . $error_messageEmail . "!" . $error_messagePassword . "!" . $error_messageConfirm . "!");   #redirect to the index page
 }
 
 //validate email using regex
