@@ -101,14 +101,13 @@ if($nameValid === true && $emailValid === true && $passwordValid === true && $co
 {
     $hash_pw = password_hash($password, PASSWORD_BCRYPT);
     
-    $sql = 'INSERT INTO users(user_id, user_name, user_password, hash_salt, user_email, reg_date)
-              VALUES (:user_id, :user_name, :user_password, :hash_salt, :user_email, :reg_date)';
+    $sql = 'INSERT INTO users(user_id, user_name, user_password, user_email, reg_date)
+              VALUES (:user_id, :user_name, :user_password, :user_email, :reg_date)';
 
     $stmt = $db->prepare($sql);
                $pArray = array( "user_id"=>NULL,
                                 "user_name"=> $name, 
                                 "user_password"=>$hash_pw, 
-                                "hash_salt"=>0, 
                                 "user_email"=>$email,
                                 "reg_date"=>NULL);
             $stmt->execute($pArray);
