@@ -86,5 +86,6 @@ foreach($userData as $user)
     {
         echo 'Email Already Taken.';
     }
+    die();
 }
 ?>
