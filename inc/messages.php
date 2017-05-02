@@ -32,7 +32,7 @@ $commentData = $query->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Comme
             {
                 echo "<style type='text/css'> #deleteComment {visibility:visible;}</style>";
                 $commentId = $comment->getComment_id();
-                if ($comment->getUser_id() == $id) 
+                if ($comment->getUser_id() == $_SESSION['user_id']) 
                 {
                     echo '<a id="deleteComment" href="./deleteComment.php?commentId=' . $commentId . '"><button id="deleteComment" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button></a>';
                 }

@@ -30,7 +30,7 @@ else
             body
             {
                 padding-top: 50px;
-                background-color: #8eff95;
+                background-color: #d8f3f4;
             }
             
             #error
