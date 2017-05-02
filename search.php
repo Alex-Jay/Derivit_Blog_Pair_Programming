@@ -3,7 +3,7 @@ require_once 'database.php';
 include 'Utility.php';
 $searchTerm = $_GET['search'];
 
-$stmt = "SELECT * FROM posts WHERE post_title LIKE '%$searchTerm%' OR post_body LIKE '%$searchTerm%'";
+$stmt = "SELECT * FROM posts INNER JOIN tag ON posts.tag_id = tag.tag_id WHERE post_title LIKE '%$searchTerm%' OR post_body LIKE '%$searchTerm%' OR tag.tag_name LIKE '%$searchTerm%'";
 $query = $db->prepare($stmt);
 $query->execute();
 $searchData = $query->fetchAll();
