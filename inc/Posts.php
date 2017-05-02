@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of posts
+ * Class for all posts. used to display all posts in post.php. 
  *
  * @author Jordan
  */
@@ -8,7 +8,8 @@ class Posts
 {
     private $post_id, $user_id, $post_tag_id, $post_title, $post_body, $post_image, $post_timestamp;
     
-    function __construct($post_id, $user_id, $post_tag_id, $post_title, $post_body, $post_image, $post_timestamp) 
+    function __construct($post_id=NULL, $user_id=0, $post_tag_id=0, 
+            $post_title="", $post_body="", $post_image="", $post_timestamp="") 
     {
         $this->post_id = $post_id;
         $this->user_id = $user_id;

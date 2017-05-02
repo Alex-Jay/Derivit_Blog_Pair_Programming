@@ -1,13 +1,14 @@
 <?php
 require_once 'database.php';
 require_once 'Utility.php';
+require_once 'Posts.php';
 
 $postId = $_GET["id"];
 
 $stmt = "SELECT * FROM posts WHERE post_id = $postId";
 $query = $db->prepare($stmt);
 $query->execute();
-$postData = $query->fetchAll();
+$postData = $query->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Posts");
 
 if(isset($_SESSION['user_id']))
 {
@@ -31,12 +32,12 @@ else
     <div class="col-md-3">
         <div class="media">
             <div class="media-center media-top text-center">
-                <img id="post_image" class="media-object" src="img/<?php echo $post['post_image']; ?>" alt="logo">
+                <img id="post_image" class="media-object" src="img/<?php echo $post->getPost_image(); ?>" alt="logo">
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item active">Creator: <?php echo fetchPosterName($db, $postId) ?></li>
                     <li class="list-group-item">Posts: <?php
-                        $userId = $post['user_id'];
+                        $userId = $post->getUser_id();
                         $stmt = "SELECT COUNT(post_id) FROM posts WHERE user_id = $userId";
                         $query = $db->prepare($stmt);
                         $query->execute();
@@ -52,12 +53,12 @@ else
         <div class="media-body">
         <div class="media" id="comment_body">
             <div class="media-body text-left">
-                <h3 class="media-heading"><?php echo $post['post_title']; ?></h3>
+                <h3 class="media-heading"><?php echo $post->getPost_title(); ?></h3>
                 <hr>
-                <p><?php echo $post['post_body']; ?></p>
+                <p><?php echo $post->getPost_body(); ?></p>
             </div>
             <ul id="post_info" class="list-inline list-group">
-                <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $post['post_timestamp'] ?></span></li>
+                <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $post->getPost_timestamp(); ?></span></li>
                 <li>|</li>
                 <span><i class="glyphicon glyphicon-star"></i> <?php echo fetchVoteCount($db, $postId) ?> votes</span>
                 <li>|</li>
@@ -69,7 +70,7 @@ else
         </div>
         </div>
 
-        <?php include './inc/comments.php'; ?>
+        <?php include './inc/messages.php'; ?>
         <div id="addComment" class="media text-center">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>

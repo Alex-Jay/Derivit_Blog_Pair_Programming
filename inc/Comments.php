@@ -8,7 +8,7 @@ class Comments
 {
     private $comment_id, $post_id, $user_id, $comment_body, $comment_timestamp;
     
-    function __construct($comment_id, $post_id, $user_id, $comment_body, $comment_timestamp) 
+    function __construct($comment_id=NULL, $post_id=0, $user_id=0, $comment_body="", $comment_timestamp="") 
     {
         $this->comment_id = $comment_id;
         $this->post_id = $post_id;
