@@ -4,7 +4,7 @@ require_once 'database.php';
 $post_title = $_POST['postTitle'];
 $post_body = $_POST['postBody'];
 $post_tag = $_POST['postTag'];
-$post_img = $_SESSION['img_link'];
+$post_img = "default.jpg";
 
 $sql = "INSERT INTO posts (post_id, user_id, tag_id, post_title, post_body, post_image, post_timestamp) VALUES (:post_id, :user_id, :tag_id, :post_title, :post_body, :post_image, :post_timestamp)";
 
