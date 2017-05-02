@@ -20,6 +20,15 @@ function fetchTag($db, $postId) {
     <div class="media">
         <div class="media-left media-top">
             <img id="post_image" class="media-object" src="img/<?php echo $post['post_image']; ?>" alt="logo">
+            Posts: <?php 
+                $userId = $post['user_id'];
+                $stmt = "SELECT COUNT(post_id) FROM posts WHERE user_id = $userId";
+                $query = $db->prepare($stmt);
+                $query->execute();
+                $f = $query->fetch();
+                $result = $f[0];
+                echo $result;
+            ?>
         </div>
         <div class="media-body text-center">
             <h4 class="media-heading"><?php echo $post['post_title']; ?></h4>
