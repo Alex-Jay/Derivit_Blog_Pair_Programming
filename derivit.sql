@@ -52,7 +52,7 @@ CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `user_id` int(4) NOT NULL,
   `tag_id` int(3) NOT NULL,
-  `post_title` varchar(25) NOT NULL,
+  `post_title` varchar(50) NOT NULL,
   `post_body` varchar(512) NOT NULL,
   `post_image` varchar(30) NOT NULL,
   `post_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
