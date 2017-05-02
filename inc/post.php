@@ -12,7 +12,7 @@ $postData = $query->fetchAll();
 <?php foreach ($postData as $post): ?>
     <div class="col-md-3">
         <div class="media">
-            <div class="media-left media-top">
+            <div class="media-center media-top text-center">
                 <img id="post_image" class="media-object" src="img/<?php echo $post['post_image']; ?>" alt="logo">
                 <br>
                 <ul class="list-group">
@@ -30,10 +30,10 @@ $postData = $query->fetchAll();
             </div>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 ">
         <div class="media-body">
-        <div class="media" id="comment_body">
-            <div class="media-body text-center">
+        <div id="xxx" class="media" id="comment_body">
+            <div class="media-body text-left">
                 <h3 class="media-heading"><?php echo $post['post_title']; ?></h3>
                 <hr>
                 <p><?php echo $post['post_body']; ?></p>

@@ -15,12 +15,21 @@ if (!isset($_SESSION['user_id'])) {
             body
             {
                 padding-top: 50px;
-                background-color: cornflowerblue;
+                background-color: #d8f3f4;
+                overflow: hidden;
             }
             .media
             {
-                background-color: #e8e8e8;
+                background-color: white;
                 padding: 20px;
+            }
+            
+            .media, .comment_body
+            {
+                -webkit-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+                -moz-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+                box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+                border-radius: 10px;
             }
             #footer
             {
@@ -42,18 +51,13 @@ if (!isset($_SESSION['user_id'])) {
             
             #post_image
             {
-               margin-top: 15px;
+               margin:auto;
             }
             
             #post_info
             {
                 float: right;
-                margin-top: 160px;
-            }
-            
-            #comment_body
-            {
-                height: 328px;
+                margin-top: 150px;
             }
         </style>
     </head>

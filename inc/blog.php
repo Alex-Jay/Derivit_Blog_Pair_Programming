@@ -13,8 +13,12 @@ $postData = $query->fetchAll();
 <style>
     .media
     {
-        background-color: #e8e8e8;
-        padding: 10px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+        -moz-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+        box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
     }
     a, a:focus, a:hover, a:after
     {
@@ -27,11 +31,18 @@ $postData = $query->fetchAll();
         width: 200px;
         border-radius: 10px;
     }
+    
+    #post_content
+    {
+        margin: auto;
+        width: 80%;
+        margin-bottom: 20px;
+    }
 </style>
 
 <?php foreach ($postData as $post): ?>
 <?php $postId = $post['post_id'] ?>
-<div class="media">
+<div id="post_content" class="media">
     <a class="pull-left">
         <img class="media-object" src="img/<?php echo $post['post_image']; ?>" id="post_image">
     </a>
