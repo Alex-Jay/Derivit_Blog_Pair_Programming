@@ -1,0 +1,95 @@
+<?php
+require_once 'database.php';
+include 'Utility.php';
+$searchTerm = $_GET['search'];
+
+$stmt = "SELECT * FROM posts WHERE post_title LIKE '%$searchTerm%' OR post_body LIKE '%$searchTerm%'";
+$query = $db->prepare($stmt);
+$query->execute();
+$searchData = $query->fetchAll();
+?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Derivit: Search [<?php echo $searchTerm?>]</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php include './inc/bootstrap_plugins.php'; ?>
+        <style>
+        body
+        {
+            padding-top: 50px;
+            background-color: #d8f3f4;
+        }
+        #post
+        {
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+        }
+        .media
+        {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+            -moz-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+            box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
+        }
+        a, a:focus, a:hover, a:after
+        {
+            text-decoration: none;
+            color: blue;
+        }
+        #post_image
+        {
+            height: 150px;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        #post_content
+        {
+            margin: auto;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        </style>
+    </head>
+
+    <body>
+        <?php include './inc/navbar.php'; ?>
+        <div class="modal-body row">
+            <div class="col-md-2 ">
+            </div>
+            <div class="col-md-8">
+                <?php foreach ($searchData as $post): ?>
+                <?php $postId = $post['post_id'] ?>
+                <div id="post_content" class="media">
+                    <a class="pull-left">
+                        <img class="media-object" src="img/<?php echo $post['post_image']; ?>" id="post_image">
+                    </a>
+                    <div class="media-body">
+                        <a href="viewPost.php?id=<?php echo $post['post_id']; ?>"><h4 class="media-heading"><?php echo $post['post_title']; ?></h4></a>
+                        <p class="text-right">by <?php echo fetchPosterName($db, $postId) ?></p>
+                        <p><?php echo $post['post_body']; ?></p>
+                        <ul class="list-inline list-unstyled">
+                            <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $post['post_timestamp'] ?></span></li>
+                            <li>|</li>
+                            <span><i class="glyphicon glyphicon-comment"></i> <?php echo fetchCommentCount($db, $postId) ?> comments</span>
+                            <li>|</li>
+                            <span><i class="glyphicon glyphicon-star"></i> <?php echo fetchVoteCount($db, $postId) ?> votes</span>
+                            <li>
+                        </ul>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="col-md-2 ">
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
+
+

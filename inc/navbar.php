@@ -6,11 +6,11 @@
                 <img alt="Brand" src="./img/logo.png" width="20px" height="20px">
             </a>
         </div>
-        <form class="navbar-form navbar-left" role="search">
+        <form class="navbar-form navbar-left" method="GET" action="./search.php" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input id="search" name="search" type="text" class="form-control" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Go</button>
         </form>
         <?php
         if (isset($_SESSION["user_id"])) 
