@@ -1,18 +1,22 @@
 <?php
-    require_once 'database.php';
-    $postId = $_GET["id"];
+require_once 'database.php';
+$postId = $_GET["id"];
 
-    $stmt = "SELECT user_name, comment_body, comment_timestamp FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId ORDER BY comment_timestamp DESC";
-    $query = $db->prepare($stmt);
-    $query->execute();
-    $commentData = $query->fetchAll();
+$stmt = "SELECT user_name, comment_body, comment_timestamp FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId";
+$query = $db->prepare($stmt);
+$query->execute();
+$commentData = $query->fetchAll();
 ?>
+
 <?php foreach ($commentData as $comment): ?>
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading"><?php echo $comment['user_name']; ?></h4>
-                <?php echo $comment['comment_body']; ?>
-            <p>TIMESTAMP: <?php echo $comment['comment_timestamp'] ?></p>
-        </div>
+<div class="media">
+    <div class="media-body">
+        <p><?php echo $comment['comment_body']; ?></p>
+        <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-user"></i> by <?php echo $comment['user_name']; ?></span></li>
+            <li>|</li>
+            <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $comment['comment_timestamp'] ?></span></li>
+        </ul>
     </div>
+</div>
 <?php endforeach; ?>

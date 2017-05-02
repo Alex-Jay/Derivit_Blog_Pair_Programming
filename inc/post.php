@@ -1,21 +1,20 @@
 <?php
-    require_once 'database.php';
-    $postId = $_GET["id"];
+require_once 'database.php';
+$postId = $_GET["id"];
 
-    $stmt = "SELECT * FROM posts WHERE post_id = $postId";
+$stmt = "SELECT * FROM posts WHERE post_id = $postId";
+$query = $db->prepare($stmt);
+$query->execute();
+$postData = $query->fetchAll();
+
+function fetchTag($db, $postId) {
+    $stmt = "SELECT tag_name FROM posts INNER JOIN tag ON posts.tag_id = tag.tag_id WHERE post_id = $postId";
     $query = $db->prepare($stmt);
     $query->execute();
-    $postData = $query->fetchAll();
-    
-    function fetchTag($db, $postId)
-    {
-        $stmt = "SELECT tag_name FROM posts INNER JOIN tag ON posts.tag_id = tag.tag_id WHERE post_id = $postId";
-        $query = $db->prepare($stmt);
-        $query->execute();
-        $f = $query->fetch();
-        $result = $f[0];
-        return $result;
-    }
+    $f = $query->fetch();
+    $result = $f[0];
+    return $result;
+}
 ?>
 <?php foreach ($postData as $post): ?>
     <div class="media">
@@ -24,9 +23,37 @@
         </div>
         <div class="media-body">
             <h4 class="media-heading"><?php echo $post['post_title']; ?></h4>
-                <?php echo $post['post_body']; ?>
-            <p>TIMESTAMP: <?php echo $post['post_timestamp'] ?></p>
-            <p>TAG: <?php echo fetchTag($db, $postId); ?></p>
+            <p><?php echo $post['post_body']; ?></p>
+            <ul class="list-inline list-unstyled">
+                <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $post['post_timestamp'] ?></span></li>
+                <li>|</li>
+                <span><i class="glyphicon glyphicon-star"></i> 0 votes</span>
+                <li>|</li>
+                <i class="glyphicon glyphicon-tag"></i> <span class="label label-primary"><?php echo fetchTag($db, $postId); ?></span>
+            </ul>
+        </div>
+        <div class="media">
+        <!-- Trigger the modal with a button -->
+        <button id="addComment" type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Comment</h4>
+                    </div>
+                    <div class="modal-body">
+                        <?php include './inc/postComment.php' ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    </div>
+    <?php include './inc/comments.php'; ?>
 <?php endforeach; ?>
