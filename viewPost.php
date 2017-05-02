@@ -17,13 +17,14 @@ if (!isset($_SESSION['user_id'])) {
                 padding-top: 50px;
                 background-color: cornflowerblue;
             }
-            
-            
-
             .media
             {
                 background-color: #e8e8e8;
-                padding: 30px;
+                padding: 20px;
+            }
+            #footer
+            {
+                background-color: #e8e8e8;
             }
 
             #addComment
@@ -39,26 +40,26 @@ if (!isset($_SESSION['user_id'])) {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             }
             
-            #post_info
-            {
-                float: right;
-            }
-            
             #post_image
             {
                margin-top: 15px;
+            }
+            
+            #comment_body
+            {
+                height: 328px;
             }
         </style>
     </head>
     <body>
         <?php include './inc/navbar.php'; ?>
         <div class="modal-body row">
-            <div class="col-md-2 ">
+            <div class="col-md-1">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <?php include './inc/post.php'; ?>
             </div>
-            <div class="col-md-2 ">
+            <div class="col-md-1">
             </div>
         </div>
     </div>
