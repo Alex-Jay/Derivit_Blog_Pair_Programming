@@ -1,5 +1,13 @@
 <?php
     session_start();
+    if(!isset($_SESSION['user_id']))
+    {
+        echo "<style type='text/css'> #addComment {visibility:hidden;}</style>";
+    }
+    else
+    {
+        echo "<style type='text/css'> #addComment {visibility:visible;}</style>";
+    }
 ?>
 <html>
     <head>
@@ -45,7 +53,7 @@
             </div>
             <div class="col-md-8 text-center">
                 <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
+                <button id="addComment" type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
