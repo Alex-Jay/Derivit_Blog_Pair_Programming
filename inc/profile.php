@@ -1,10 +1,3 @@
-<style>
-    #postIdea
-    {
-        background: #54dc84;
-        font-weight: bold;
-    }
-</style>
 <ul class="nav navbar-nav navbar-right">
     <a href="create_blog.php" class="navbar-link">
         <button id="postIdea" type="button" class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#myModal">Express Your Idea</button>

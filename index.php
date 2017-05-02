@@ -8,7 +8,7 @@ session_start();
         <title>Derivit: Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php include './inc/bootstrap_plugins.php'; ?>
-        <link rel="stylesheet" type="text/css" href="css/blog.css" />
+        <link rel="stylesheet" type="text/css" href="css/blog.css"/>
         <style>
             body
             {

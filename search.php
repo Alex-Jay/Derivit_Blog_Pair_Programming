@@ -13,39 +13,14 @@ $searchData = $query->fetchAll();
         <meta charset="UTF-8">
         <title>Derivit: Search [<?php echo $searchTerm?>]</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/blog.css"/>
         <?php include './inc/bootstrap_plugins.php'; ?>
         <style>
         body
         {
             padding-top: 50px;
-            background-color: #d8f3f4;
+            background-color: #f4feff;
         }
-        #post
-        {
-            border: 1px solid #e5e5e5;
-            border-radius: 5px;
-        }
-        .media
-        {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            -webkit-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-            -moz-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-            box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-        }
-        a, a:focus, a:hover, a:after
-        {
-            text-decoration: none;
-            color: blue;
-        }
-        #post_image
-        {
-            height: 150px;
-            width: 200px;
-            border-radius: 10px;
-        }
-
         #post_content
         {
             margin: auto;

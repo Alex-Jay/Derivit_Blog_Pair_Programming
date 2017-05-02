@@ -8,41 +8,6 @@ $query->execute();
 $postData = $query->fetchAll();
 ?>
 
-<style>
-    .media
-    {
-        background-color: white;
-        padding: 25px;
-        border-radius: 10px;
-        -webkit-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-        -moz-box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-        box-shadow: 0px 2px 17px 0px rgba(0,0,0,0.18);
-    }
-    a, a:focus, a:hover, a:after
-    {
-        text-decoration: none;
-        color: blue;
-    }
-    #post_image
-    {
-        height: 150px;
-        width: 200px;
-        border-radius: 10px;
-    }
-
-    #post_content
-    {
-        margin: auto;
-        width: 80%;
-        margin-bottom: 20px;
-    }
-    #deletePost
-    {
-        color: red;
-        float: right;
-    }
-</style>
-
 <?php foreach ($postData as $post): ?>
     <?php $postId = $post['post_id'] ?>
     <div id="post_content" class="media">
