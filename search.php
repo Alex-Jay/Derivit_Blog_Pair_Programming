@@ -52,6 +52,11 @@ $searchData = $query->fetchAll();
             width: 80%;
             margin-bottom: 20px;
         }
+        #foundFor
+        {
+            padding: 10px;
+            margin-left: 120px;
+        }
         </style>
     </head>
 
@@ -61,6 +66,7 @@ $searchData = $query->fetchAll();
             <div class="col-md-2 ">
             </div>
             <div class="col-md-8">
+                <h4 id='foundFor'>Found For : <?php echo $searchTerm?></h4>
                 <?php foreach ($searchData as $post): ?>
                 <?php $postId = $post['post_id'] ?>
                 <div id="post_content" class="media">
