@@ -2,7 +2,7 @@
     require_once 'database.php';
     $postId = $_GET["id"];
 
-    $stmt = "SELECT user_name, comment_body, comment_timestamp FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId";
+    $stmt = "SELECT user_name, comment_body, comment_timestamp FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId ORDER BY comment_timestamp DESC";
     $query = $db->prepare($stmt);
     $query->execute();
     $commentData = $query->fetchAll();
