@@ -9,7 +9,14 @@ $query = $db->prepare($stmt);
 $query->execute();
 $postData = $query->fetchAll();
 
-$voteStatus = fetchHasVoted($db, $postId, $_SESSION['user_id']);
+if(isset($_SESSION['user_id']))
+{
+    $voteStatus = fetchHasVoted($db, $postId, $_SESSION['user_id']);
+}
+else
+{
+    $voteStatus = 1;
+}
 
 if ($voteStatus == 1)
 {

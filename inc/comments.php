@@ -18,6 +18,7 @@ $commentData = $query->fetchAll();
             <li>|</li>
             <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $comment['comment_timestamp'] ?></span></li>
         </ul>
+        <a href="./deleteComment.php"><button class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button></a>
     </div>
 </div>
 <?php endforeach; ?>
