@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
                 background-color: #e8e8e8;
             }
 
-            #addComment
+            #addComment button
             {
                 background: #aed88b;
             }
@@ -72,6 +72,12 @@ if (!isset($_SESSION['user_id'])) {
             {
                 background: #68c4ff;
                 color: black;
+            }
+            
+            #deleteComment
+            {
+                color: red;
+                float: right;
             }
         </style>
     </head>

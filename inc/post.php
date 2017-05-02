@@ -70,9 +70,9 @@ else
         </div>
 
         <?php include './inc/comments.php'; ?>
-        <div class="media text-center">
+        <div id="addComment" class="media text-center">
             <!-- Trigger the modal with a button -->
-            <button id="addComment" type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
+            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">

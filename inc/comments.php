@@ -1,8 +1,9 @@
 <?php
 require_once 'database.php';
 $postId = $_GET["id"];
+$_SESSION['post_id'] = $postId;
 
-$stmt = "SELECT user_name, comment_body, comment_timestamp FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId";
+$stmt = "SELECT comment_id, user_name, comment_body, comment_timestamp, comments.user_id FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId";
 $query = $db->prepare($stmt);
 $query->execute();
 $commentData = $query->fetchAll();
@@ -18,7 +19,9 @@ $commentData = $query->fetchAll();
             <li>|</li>
             <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $comment['comment_timestamp'] ?></span></li>
         </ul>
-        <a href="./deleteComment.php"><button class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button></a>
+        <?php 
+        $commentId = $comment['comment_id'];
+        if($comment['user_id'] == $_SESSION['user_id']){echo '<a href="./deleteComment.php?commentId='. $commentId .'"><button id="deleteComment" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button></a>';}?>
     </div>
 </div>
-<?php endforeach; ?>
+<?php endforeach;
