@@ -107,7 +107,6 @@ else
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                         </div>
-                        <a href="index.php">HomePage</a>
                     </form>
                 </div>
             </div>
