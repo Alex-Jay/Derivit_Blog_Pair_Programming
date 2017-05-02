@@ -1,38 +1,13 @@
 <?php
 require_once 'database.php';
+require_once 'Utility.php';
 
 $stmt = "SELECT * FROM posts";
 $query = $db->prepare($stmt);
 $query->execute();
 $postData = $query->fetchAll();
 
-function fetchCommentCount($db, $postId) {
-    $stmt = "SELECT COUNT(comment_id) FROM comments WHERE post_id = $postId";
-    $query = $db->prepare($stmt);
-    $query->execute();
-    $f = $query->fetch();
-    $result = $f[0];
-    return $result;
-}
 
-function fetchVoteCount($db, $postId) {
-    $stmt = "SELECT COUNT(vote_id) FROM votes WHERE post_id = $postId";
-    $query = $db->prepare($stmt);
-    $query->execute();
-    $f = $query->fetch();
-    $result = $f[0];
-    return $result;
-}
-
-function fetchPosterName($db, $postId)
-    {
-        $stmt = "SELECT user_name FROM posts INNER JOIN users ON posts.user_id = users.user_id WHERE post_id = $postId";
-        $query = $db->prepare($stmt);
-        $query->execute();
-        $f = $query->fetch();
-        $result = $f[0];
-        return $result;
-    }
 ?>
 
 <style>

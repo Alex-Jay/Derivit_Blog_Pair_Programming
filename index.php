@@ -13,6 +13,7 @@ session_start();
             body
             {
                 padding-top: 50px;
+                background-color: cornflowerblue;
             }
         </style>
     </head>

@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
             body
             {
                 padding-top: 50px;
+                background-color: cornflowerblue;
             }
             
             
@@ -45,8 +46,7 @@ if (!isset($_SESSION['user_id'])) {
             
             #post_image
             {
-               margin-top: 25px;
-               margin-left: 25px;
+               margin-top: 15px;
             }
         </style>
     </head>
@@ -59,16 +59,7 @@ if (!isset($_SESSION['user_id'])) {
                 <?php include './inc/post.php'; ?>
             </div>
             <div class="col-md-2 ">
-                <div class="col-md-12">
-                </div>
             </div>
-            <div class="col-md-8">
-            </div>
-            <div class="col-md-2 ">
-                <div class="col-md-12">
-                </div>
-            </div>
-
         </div>
     </div>
 </body>
