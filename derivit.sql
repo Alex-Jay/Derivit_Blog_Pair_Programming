@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2017 at 10:47 PM
+-- Generation Time: May 02, 2017 at 08:39 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -39,8 +39,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `post_id`, `user_id`, `comment_body`, `comment_timestamp`) VALUES
-(2, 6, 12, 'Good Game. Would Love to Play.', '2017-05-01 20:44:45'),
-(3, 7, 11, 'Sounds frightening. 10/10 Game Idea.', '2017-05-01 20:45:05');
+(18, 7, 11, 'dsdasdsada', '2017-05-02 04:02:53'),
+(19, 6, 11, 'dasdsadasdasda', '2017-05-02 04:03:00');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,8 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`post_id`, `user_id`, `tag_id`, `post_title`, `post_body`, `post_image`, `post_timestamp`) VALUES
 (6, 11, 4, 'Role Playing Game', 'asfiosalhenignjerlikgnmlksndbglksdnbnsdblksdnblksdnlkbndsbnsdnbklsdnlkbsdnbsnlk', 'rpg.jpeg', '2017-05-01 20:43:52'),
-(7, 12, 2, 'Horror Game', 'lkaekhgankgnaklngklaelgnaelknglkaelkgnaelkgnaelknglkaenglkaglknaelkgnaleknglken', 'horror.jpeg', '2017-05-01 20:44:24');
+(7, 12, 2, 'Horror Game', 'lkaekhgankgnaklngklaelgnaelknglkaelkgnaelkgnaelknglkaenglkaglknaelkgnaleknglken', 'horror.jpeg', '2017-05-01 20:44:24'),
+(8, 11, 3, 'Good Idea For Action Game', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.', 'action.jpeg', '2017-05-02 01:36:45');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,13 @@ CREATE TABLE `votes` (
 --
 
 INSERT INTO `votes` (`vote_id`, `post_id`, `user_id`, `has_voted`) VALUES
-(2, 7, 11, 1);
+(2, 7, 11, 1),
+(3, 6, 11, 1),
+(4, 6, 11, 1),
+(5, 6, 11, 1),
+(6, 8, 11, 1),
+(7, 7, 12, 1),
+(8, 6, 12, 1);
 
 --
 -- Indexes for dumped tables
@@ -177,12 +184,12 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `tag`
 --
@@ -192,12 +199,12 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `vote_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
