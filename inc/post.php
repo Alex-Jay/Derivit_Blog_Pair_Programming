@@ -38,13 +38,14 @@ $postData = $query->fetchAll();
                 <hr>
                 <p><?php echo $post['post_body']; ?></p>
             </div>
-            <ul id="post_info" class="list-inline list-unstyled text-right">
+            <ul id="post_info" class="list-inline list-group">
                 <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $post['post_timestamp'] ?></span></li>
                 <li>|</li>
                 <span><i class="glyphicon glyphicon-star"></i> <?php echo fetchVoteCount($db, $postId) ?> votes</span>
                 <li>|</li>
                 <i class="glyphicon glyphicon-tag"></i> <span class="label label-primary"><?php echo fetchTag($db, $postId); ?></span>
             </ul>
+        </div>
         </div>
 
         <?php include './inc/comments.php'; ?>

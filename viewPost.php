@@ -45,6 +45,12 @@ if (!isset($_SESSION['user_id'])) {
                margin-top: 15px;
             }
             
+            #post_info
+            {
+                float: right;
+                margin-top: 160px;
+            }
+            
             #comment_body
             {
                 height: 328px;
