@@ -22,8 +22,6 @@ require_once 'database.php';
                 <?php include './inc/createBlogForm.php'; ?>
             </div>
             <div class="col-md-2 ">
-                <div class="col-md-12">
-                </div>
             </div>
         </div>
     </body>
