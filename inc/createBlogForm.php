@@ -7,12 +7,6 @@ $query = $db->prepare($stmt);
 $query->execute();
 $tagData = $query->fetchAll();
 ?>
-<script language="javascript">    
-    function submitForm()
-    {
-        document.getElementById("postForm").submit();
-    }
-</script>
 
 <form id="postForm" method="POST" action="addPost.php">
     <label for="postTitle">Post Title: 
