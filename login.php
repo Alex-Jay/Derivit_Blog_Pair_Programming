@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
 session_start();
 // make sure that there is no other session running
@@ -30,7 +25,7 @@ else
             body
             {
                 padding-top: 50px;
-                background-color: #d8f3f4;
+                background-color: #f4feff;
             }
             
             #error

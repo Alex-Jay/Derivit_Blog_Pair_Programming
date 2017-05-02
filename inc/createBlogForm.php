@@ -9,7 +9,12 @@ $query = $db->prepare($stmt);
 $query->execute();
 $tagData = $query->fetchAll();
 ?>
-
+<style>
+    body
+    {
+        background: #f4feff;
+    }
+</style>
 <div class="col-md-12">
     <h1>What's on your mind</h1>
     <form class="form-horizontal" method="post" action="addPost.php">

@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
             body
             {
                 padding-top: 50px;
-                background-color: #d8f3f4;
+                background-color: #f4feff;
             }
             .media
             {
