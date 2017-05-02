@@ -35,3 +35,14 @@ function fetchTag($db, $postId) {
     $result = $f[0];
     return $result;
 }
+
+function fetchHasVoted($db, $postId, $userId)
+{
+    $stmt = "SELECT has_voted FROM votes WHERE post_id = $postId AND user_id = $userId";
+    $query = $db->prepare($stmt);
+    $query->execute();
+    $f = $query->fetch();
+    $result = $f[0];
+    return $result;
+}
+

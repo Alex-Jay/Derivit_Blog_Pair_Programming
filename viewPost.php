@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user_id'])) {
     echo "<style type='text/css'> #addComment {visibility:hidden;}</style>";
 } else {
@@ -58,6 +59,19 @@ if (!isset($_SESSION['user_id'])) {
             {
                 float: right;
                 margin-top: 150px;
+            }
+            
+            #voteButton
+            {
+                float: right;
+                margin-top: -20px;
+                margin-left: 10px;
+            }
+            
+            #voteButton button
+            {
+                background: #68c4ff;
+                color: black;
             }
         </style>
     </head>

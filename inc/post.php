@@ -8,6 +8,17 @@ $stmt = "SELECT * FROM posts WHERE post_id = $postId";
 $query = $db->prepare($stmt);
 $query->execute();
 $postData = $query->fetchAll();
+
+$voteStatus = fetchHasVoted($db, $postId, $_SESSION['user_id']);
+
+if ($voteStatus == 1)
+{
+    echo "<style type='text/css'> #voteButton {visibility:hidden;}</style>";
+}
+else
+{
+    echo "<style type='text/css'> #voteButton {visibility:visible;}</style>";
+}
 ?>
 <?php foreach ($postData as $post): ?>
     <div class="col-md-3">
@@ -32,7 +43,7 @@ $postData = $query->fetchAll();
     </div>
     <div class="col-md-9 ">
         <div class="media-body">
-        <div id="xxx" class="media" id="comment_body">
+        <div class="media" id="comment_body">
             <div class="media-body text-left">
                 <h3 class="media-heading"><?php echo $post['post_title']; ?></h3>
                 <hr>
@@ -44,6 +55,9 @@ $postData = $query->fetchAll();
                 <span><i class="glyphicon glyphicon-star"></i> <?php echo fetchVoteCount($db, $postId) ?> votes</span>
                 <li>|</li>
                 <i class="glyphicon glyphicon-tag"></i> <span class="label label-primary"><?php echo fetchTag($db, $postId); ?></span>
+                <form id="voteButton" method="POST" action="./insertVote.php?id=<?php echo $postId?>">
+                    <button type="submit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span><br>Vote</button>
+                </form>
             </ul>
         </div>
         </div>
