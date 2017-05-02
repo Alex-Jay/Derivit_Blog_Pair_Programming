@@ -50,6 +50,7 @@ function fetchPosterName($db, $postId)
     {
         height: 150px;
         width: 200px;
+        border-radius: 10px;
     }
 </style>
 

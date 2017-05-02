@@ -16,16 +16,37 @@ if (!isset($_SESSION['user_id'])) {
             {
                 padding-top: 50px;
             }
+            
+            
 
             .media
             {
                 background-color: #e8e8e8;
-                padding: 10px;
+                padding: 30px;
             }
 
             #addComment
             {
                 background: #aed88b;
+            }
+            
+            hr
+            {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            
+            #post_info
+            {
+                float: right;
+            }
+            
+            #post_image
+            {
+               margin-top: 25px;
+               margin-left: 25px;
             }
         </style>
     </head>

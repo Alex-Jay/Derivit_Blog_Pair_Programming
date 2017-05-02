@@ -14,7 +14,8 @@
         border: 1px solid #d3d3d3;
         border-radius: 5px;
         background: white;
-        padding: 10px;
+        height: 35px;
+        padding: 5px;
     }
     #submitComment:hover
     {

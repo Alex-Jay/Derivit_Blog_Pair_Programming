@@ -10,8 +10,9 @@ $commentData = $query->fetchAll();
 
 <?php foreach ($commentData as $comment): ?>
 <div class="media">
-    <div class="media-body">
+    <div class="media-body text-center">
         <p><?php echo $comment['comment_body']; ?></p>
+        <hr>
         <ul class="list-inline list-unstyled">
             <li><span><i class="glyphicon glyphicon-user"></i> by <?php echo $comment['user_name']; ?></span></li>
             <li>|</li>
