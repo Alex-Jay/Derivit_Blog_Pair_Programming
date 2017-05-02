@@ -5,12 +5,20 @@ require_once 'Comments.php';
 $postId = $_GET["id"];
 $_SESSION['post_id'] = $postId;
 
-
-
 $stmt = "SELECT comment_id, user_name, comment_body, comment_timestamp, comments.user_id FROM comments INNER JOIN users ON comments.user_id = users.user_id WHERE post_id = $postId";
 $query = $db->prepare($stmt);
 $query->execute();
 $commentData = $query->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Comments");
+
+function fetchCommentName($db, $userId)
+{
+    $stmt = "SELECT user_name FROM users WHERE user_id = $userId";
+    $query = $db->prepare($stmt);
+    $query->execute();
+    $f = $query->fetch();
+    $result = $f[0];
+    return $result;
+}
 ?>
 
 <?php foreach ($commentData as $comment): ?>
@@ -20,7 +28,7 @@ $commentData = $query->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Comme
             <p><?php echo $comment->getComment_body(); ?></p>
             <hr>
             <ul class="list-inline list-unstyled">
-                <li><span><i class="glyphicon glyphicon-user"></i> by <?php echo $comment->getUser_id(); ?></span></li>
+                <li><span><i class="glyphicon glyphicon-user"></i> by <?php echo fetchCommentName($db, $comment->getUser_id());?></span></li>
                 <li>|</li>
                 <li><span><i class="glyphicon glyphicon-calendar"></i> <?php echo $comment->getComment_timestamp(); ?></span></li>
             </ul>
